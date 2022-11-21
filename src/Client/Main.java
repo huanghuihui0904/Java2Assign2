@@ -82,17 +82,7 @@ public class Main extends Application {
         passwordField.setPromptText("Enter your password.");
         grid.add(passwordField, 0, 4);
 
-
-
-
-
-
-
         grid.setStyle("-fx-background-color: #a52424;");
-
-
-
-
 
 
         mainScene = new Scene(grid, screenWidth, screenHeight);
@@ -147,9 +137,8 @@ public class Main extends Application {
     }
     public void alertPlayerLoginAgain() {
         Platform.runLater(() -> {
-            Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "The user does not exist or the password is incorrect!\nClick for login again!"
-                , ButtonType.OK);
-
+            Alert alert= new Alert(Alert.AlertType.CONFIRMATION,
+                "The user does not exist or the password is incorrect!\nClick for login again!", ButtonType.OK);
 
             Optional<ButtonType> result = alert.showAndWait();
             System.out.println("000000");
