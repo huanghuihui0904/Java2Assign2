@@ -232,7 +232,7 @@ class TicTacToeGame extends Application {
     }
 
     stage.setTitle("Player vs Player");
-    label = new Label("     waiting......");
+    label = new Label("");
     pane.add(label, 3, 1);
     labelTurn = new Label("");
     pane.add(labelTurn, 3, 2);
@@ -382,6 +382,12 @@ class TicTacToeGame extends Application {
 
     });
 
+  }
+
+  public void waiting(){
+    Platform.runLater(() -> {
+      label.setText("     waiting...");
+    });
   }
 
   public void Goodbye() throws IOException {

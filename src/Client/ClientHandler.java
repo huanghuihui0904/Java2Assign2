@@ -24,7 +24,7 @@ public class ClientHandler implements Runnable {
 
       try {
         if ((strLine = requestInput.readLine()) != null) {
-          if (strLine.startsWith("p1in")) {
+         if (strLine.startsWith("p1in")) {
             int room = Integer.parseInt(strLine.replace("p1in", ""));
             myGame.updateState(room);
             myGame.updateTurnOn();
@@ -55,6 +55,7 @@ public class ClientHandler implements Runnable {
             myGame.C22.setDisable(true);
 
           } else if (strLine.equals("p1lock")) {
+            myGame.waiting();
             myGame.C00.setDisable(true);
             myGame.C01.setDisable(true);
             myGame.C02.setDisable(true);
