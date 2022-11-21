@@ -306,20 +306,17 @@ class TicTacToeGame extends Application {
   }
 
 
-
-
-//todo alert who win
+  //todo alert who win
   public void alertPlayerWin() {
     Platform.runLater(() -> {
-      Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "You win!"
-            , ButtonType.OK);
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You win!", ButtonType.OK);
 
 
       Optional<ButtonType> result = alert.showAndWait();
       System.out.println("000000");
 
 
-      if(result.get() == ButtonType.OK){
+      if (result.get() == ButtonType.OK) {
 
         System.exit(1);
       }
@@ -327,54 +324,30 @@ class TicTacToeGame extends Application {
 
     });
   }
-    public void alertPlayerLoss() {
-      Platform.runLater(() -> {
-        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "You lose!"
-              , ButtonType.OK);
 
-
-        Optional<ButtonType> result = alert.showAndWait();
-
-
-
-
-        if(result.get() == ButtonType.OK){
-          System.exit(1);
-        }
-      });}
-      public void alertPlayerDraw() {
-        Platform.runLater(() -> {
-          Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You draw!"
-                , ButtonType.OK);
-
-
-          Optional<ButtonType> result = alert.showAndWait();
-
-
-            if(result.get() == ButtonType.OK){
-              try {
-                Goodbye();
-              } catch (IOException e) {
-                throw new RuntimeException(e);
-              }
-              System.exit(1);
-            }
-
-
-
-        });
-
-  }
-  public void alertPlayerGoodbye() {
+  public void alertPlayerLoss() {
     Platform.runLater(() -> {
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Your opponent is offline!\nClick to exit!"
-          , ButtonType.OK);
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You lose!", ButtonType.OK);
 
 
       Optional<ButtonType> result = alert.showAndWait();
 
 
-      if(result.get() == ButtonType.OK){
+      if (result.get() == ButtonType.OK) {
+        System.exit(1);
+      }
+    });
+  }
+
+  public void alertPlayerDraw() {
+    Platform.runLater(() -> {
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You draw!", ButtonType.OK);
+
+
+      Optional<ButtonType> result = alert.showAndWait();
+
+
+      if (result.get() == ButtonType.OK) {
         try {
           Goodbye();
         } catch (IOException e) {
@@ -384,10 +357,33 @@ class TicTacToeGame extends Application {
       }
 
 
+    });
+
+  }
+
+  public void alertPlayerGoodbye() {
+    Platform.runLater(() -> {
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+          "Your opponent is offline!\nClick to exit!", ButtonType.OK);
+
+
+      Optional<ButtonType> result = alert.showAndWait();
+
+
+      if (result.get() == ButtonType.OK) {
+        try {
+          Goodbye();
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+        System.exit(1);
+      }
+
 
     });
 
   }
+
   public void Goodbye() throws IOException {
     printStream = new PrintStream(socket.getOutputStream());
     printStream.println("Goodbye");
@@ -395,14 +391,14 @@ class TicTacToeGame extends Application {
 
   public void alertPlayerServiceGoodbye() {
     Platform.runLater(() -> {
-      Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "The service is offline!\nClick to exit!"
-          , ButtonType.OK);
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+          "The service is offline!\nClick to exit!", ButtonType.OK);
 
 
       Optional<ButtonType> result = alert.showAndWait();
 
 
-      if(result.get() == ButtonType.OK){
+      if (result.get() == ButtonType.OK) {
         try {
           Goodbye();
         } catch (IOException e) {
@@ -410,7 +406,6 @@ class TicTacToeGame extends Application {
         }
         System.exit(1);
       }
-
 
 
     });
@@ -420,8 +415,9 @@ class TicTacToeGame extends Application {
   //todo 得到服务器发过来的更新，之后更新自己本地的棋盘
   public void makeMoveBackEnd() throws IOException {
     printStream = new PrintStream(socket.getOutputStream());
-    printStream.println(chrstate[0][0] + chrstate[0][1] + chrstate[0][2] + chrstate[1][0] + chrstate[1][1] +
-        chrstate[1][2] + chrstate[2][0] + chrstate[2][1] + chrstate[2][2]);
+    printStream.println(chrstate[0][0] + chrstate[0][1] + chrstate[0][2]
+        + chrstate[1][0] + chrstate[1][1]
+        + chrstate[1][2] + chrstate[2][0] + chrstate[2][1] + chrstate[2][2]);
   }
 
   public void updateState(int round) {
@@ -444,9 +440,10 @@ class TicTacToeGame extends Application {
     });
 
   }
+
   public void whichPlayer(int i) {
     Platform.runLater(() -> {
-      labelPlayer.setText("     You are Player "+i);
+      labelPlayer.setText("     You are Player " + i);
     });
 
   }
@@ -528,7 +525,6 @@ class TicTacToeGame extends Application {
       setX(canvas[2][2].getGraphicsContext2D());
     }
 
-//    checkForWin();
   }
 
   //todo new my game
@@ -547,7 +543,6 @@ class TicTacToeGame extends Application {
       e.printStackTrace();
     }
   }
-
 
 
 }
