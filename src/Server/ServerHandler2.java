@@ -45,8 +45,8 @@ public class ServerHandler2 implements Runnable {
 
             }
 
-            System.out.println("player2-----"+strLine);
-            myServer.strGameState   =strLine;
+            System.out.println("player2-----" + strLine);
+            myServer.strGameState = strLine;
             System.out.println("p2 strGame updated!");
             responseOutput = new PrintStream(socket.getOutputStream(), true);
             responseOutput.println("lock");
@@ -67,7 +67,7 @@ public class ServerHandler2 implements Runnable {
 
           }
         } else {
-          if(myServer.player1On==false){
+          if (myServer.player1On == false) {
             System.out.println("detect player1 offline");
             responseOutput = new PrintStream(socket.getOutputStream(), true);
             responseOutput.println("lock");
@@ -97,13 +97,12 @@ public class ServerHandler2 implements Runnable {
         }
 
 
-
       }
     } catch (IOException e) {
 
       System.out.println("player2 offline");
       myServer.player2On = false;
-    }catch (Exception e){
+    } catch (Exception e) {
 
     }
 

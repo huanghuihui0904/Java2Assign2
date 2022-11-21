@@ -2,9 +2,7 @@ package Server;
 
 import java.io.*;
 import java.net.*;
-import java.util.StringTokenizer;
-import java.util.NoSuchElementException;
-import java.util.Date;
+
 
 public class ServerHandler implements Runnable {
 
@@ -25,7 +23,7 @@ public class ServerHandler implements Runnable {
 
   @Override
   public void run() {
-new BeforeEnd(myServer);
+    new BeforeEnd(myServer);
     try {
       System.out.println("Connected Player 1");
       String strLine;
@@ -58,7 +56,6 @@ new BeforeEnd(myServer);
             }
 
 
-
             myServer.strGameState = strLine;
             System.out.println("p1 strGame updated!");
             System.out.println(myServer.strGameState);
@@ -82,8 +79,7 @@ new BeforeEnd(myServer);
 
           }
         } else {
-
-          if(myServer.player2On==false){
+          if (myServer.player2On == false) {
             System.out.println("detect player1 offline");
             responseOutput = new PrintStream(socket.getOutputStream(), true);
             responseOutput.println("lock");
@@ -100,7 +96,7 @@ new BeforeEnd(myServer);
             strPrev = myServer.strGameState;
             String checkWin = checkForWin(strPrev);
             if (checkWin.equals("continue")) {
-
+              continue;
             } else {
               responseOutput = new PrintStream(socket.getOutputStream(), true);
               responseOutput.println("lock");
@@ -118,7 +114,7 @@ new BeforeEnd(myServer);
     } catch (IOException e) {
       System.out.println("player1 offline");
       myServer.player1On = false;
-    }catch (Exception e){
+    } catch (Exception e) {
 
     }
 
